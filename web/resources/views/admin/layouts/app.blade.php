@@ -128,6 +128,24 @@
                             </ul>
                         </div>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#Driver" aria-expanded="false" aria-controls="Driver">
+                            <i class="icon-book menu-icon"></i>
+                            <span class="menu-title">Driver</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="Driver">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('/backoffice/Driver') }}">Driver</a>
+                                </li>
+
+
+                            </ul>
+                        </div>
+                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#BookingManagement" aria-expanded="false" aria-controls="BookingManagement">
                             <i class="icon-book menu-icon"></i>
@@ -142,10 +160,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ url('/backoffice/Manage-Booking') }}">Manage Booking</a>
                                 </li>
-                                {{-- <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('/backoffice/') }}">New Booking</a>
-                                </li> --}}
-
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('/backoffice/Bookings-Deposit') }}">Bookings Deposit</a>
+                                </li>
 
                             </ul>
                         </div>
@@ -175,6 +192,9 @@
                         <div class="collapse" id="deliveryCharges">
 
                                 <ul class="nav flex-column sub-menu">
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ url('/backoffice/Delivery-pickup-charges') }}"> Delivery Pickup Charges</a>
+                                    </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ url('/backoffice/Charges') }}"> Charges</a>
                                     </li>

@@ -15,6 +15,9 @@ use App\Http\Controllers\Admin\TourPackagesController;
 use App\Http\Controllers\Admin\ZonesController;
 use App\Http\Controllers\Admin\PromotionsController;
 use App\Http\Controllers\Admin\UsersController;
+use App\Http\Controllers\Admin\BookingDepositController;
+use App\Http\Controllers\Admin\DriverControllerr;
+use App\Http\Controllers\Admin\DeliveryPickupChargesController;
 
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\UserController;
@@ -214,6 +217,43 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/Users/{id}/edit', [UsersController::class, 'edit'])->name('admin.Users.edit');
         Route::put('/Users/{id}', [UsersController::class, 'update'])->name('admin.Users.update');
         Route::delete('/Users/{id}', [UsersController::class, 'destroy'])->name('admin.Users.destroy');
+        // Route::get('/export-master-supplier', [CarAvailabilityController::class, 'export_tabel_car_availability'])->name('Export.car_availability');
+        // Route::get('/export-master-supplier-pdf', [CarAvailabilityController::class, 'export_tabel_car_availability_pdf'])->name('Export.car_availabilityPDF');
+
+    });
+
+    Route::prefix('backoffice')->group(function () {
+        Route::get('/Bookings-Deposit', [BookingDepositController::class, 'index'])->name('admin.Bookings-Deposit.index');
+        Route::get('/Bookings-Deposit/create', [BookingDepositController::class, 'create'])->name('admin.Bookings-Deposit.create');
+        Route::post('/Bookings-Deposit', [BookingDepositController::class, 'store'])->name('admin.Bookings-Deposit.store');
+        Route::get('/Bookings-Deposit/{id}/edit', [BookingDepositController::class, 'edit'])->name('admin.Bookings-Deposit.edit');
+        Route::put('/Bookings-Deposit/{id}', [BookingDepositController::class, 'update'])->name('admin.Bookings-Deposit.update');
+        Route::delete('/Bookings-Deposit/{id}', [BookingDepositController::class, 'destroy'])->name('admin.Bookings-Deposit.destroy');
+        // Route::get('/export-master-supplier', [CarAvailabilityController::class, 'export_tabel_car_availability'])->name('Export.car_availability');
+        // Route::get('/export-master-supplier-pdf', [CarAvailabilityController::class, 'export_tabel_car_availability_pdf'])->name('Export.car_availabilityPDF');
+
+    });
+
+    Route::prefix('backoffice')->group(function () {
+        Route::get('/Driver', [DriverControllerr::class, 'index'])->name('admin.Driver.index');
+        Route::get('/Driver/create', [DriverControllerr::class, 'create'])->name('admin.Driver.create');
+        Route::post('/Driver', [DriverControllerr::class, 'store'])->name('admin.Driver.store');
+        Route::get('/Driver/{id}/edit', [DriverControllerr::class, 'edit'])->name('admin.Driver.edit');
+        Route::put('/Driver/{id}', [DriverControllerr::class, 'update'])->name('admin.Driver.update');
+        Route::delete('/Driver/{id}', [DriverControllerr::class, 'destroy'])->name('admin.Driver.destroy');
+        // Route::get('/export-master-supplier', [CarAvailabilityController::class, 'export_tabel_car_availability'])->name('Export.car_availability');
+        // Route::get('/export-master-supplier-pdf', [CarAvailabilityController::class, 'export_tabel_car_availability_pdf'])->name('Export.car_availabilityPDF');
+
+    });
+
+
+    Route::prefix('backoffice')->group(function () {
+        Route::get('/Delivery-pickup-charges', [DeliveryPickupChargesController::class, 'index'])->name('admin.Delivery-pickup-charges.index');
+        Route::get('/Delivery-pickup-charges/create', [DeliveryPickupChargesController::class, 'create'])->name('admin.Delivery-pickup-charges.create');
+        Route::post('/Delivery-pickup-charges', [DeliveryPickupChargesController::class, 'store'])->name('admin.Delivery-pickup-charges.store');
+        Route::get('/Delivery-pickup-charges/{id}/edit', [DeliveryPickupChargesController::class, 'edit'])->name('admin.Delivery-pickup-charges.edit');
+        Route::put('/Delivery-pickup-charges/{id}', [DeliveryPickupChargesController::class, 'update'])->name('admin.Delivery-pickup-charges.update');
+        Route::delete('/Delivery-pickup-charges/{id}', [DeliveryPickupChargesController::class, 'destroy'])->name('admin.Delivery-pickup-charges.destroy');
         // Route::get('/export-master-supplier', [CarAvailabilityController::class, 'export_tabel_car_availability'])->name('Export.car_availability');
         // Route::get('/export-master-supplier-pdf', [CarAvailabilityController::class, 'export_tabel_car_availability_pdf'])->name('Export.car_availabilityPDF');
 

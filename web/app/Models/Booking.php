@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\cars;
 use App\Models\User;
 use App\Models\ManageBooking;
+use App\Models\BookingDeposit;
+
 
 
 class Booking extends Model
@@ -41,5 +43,10 @@ class Booking extends Model
     public function ManageBooking()
     {
         return $this->hasMany(ManageBooking::class, 'booking_id ');
+    }
+
+    public function booking()
+    {
+        return $this->hasMany(booking::class, 'booking_id');
     }
 }

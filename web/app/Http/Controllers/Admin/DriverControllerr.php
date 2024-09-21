@@ -2,43 +2,69 @@
 
 namespace App\Http\Controllers\Admin;
 
-// use DataTables;
 use App\Models\Driver;
-use App\Models\Promotion;
-use Illuminate\Http\Request;
-use App\Models\AdditionalService;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use \Yajra\Datatables\Datatables;
+// use App\DataTables;
+
+
+use Session;
+use App\Exports\DriverExport;
+use Barryvdh\DomPDF\Facade\Pdf; // Import PDF facade
+
+use App\Http\Controllers\Controller;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session as FacadesSession;
 
 class DriverControllerr extends Controller
 {
-   /**
+
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+    //  public function export_tabel_Driver()
+    //  {
+    //      return \Excel::download(new DriverExport, 'Driver.xlsx');
+    //  }
+    //  public function export_tabel_Driver_pdf()
+    //  {
+    //     $Driver = Driver::all();
+    //     $pdf = PDF::loadView('pdf.Driver', compact('Driver'));
+    //     return $pdf->download('Driver.pdf');
+    //  }
+
+
+
     public function index(Request $request)
-    {
-        $post = '';
-        if ($request->ajax()) {
-            $post = Driver::get();
-            return DataTables::of($post)
-                ->addIndexColumn()
-                ->addColumn('action', function ($row) {
-                    $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-success  editPost"><i class="ti-pencil"></i></a>';
-                    $btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="btn btn-danger  deletePost"><i class="ti-trash"></i></a>';
-                })
+{
+    // Get all available cars from the cars table
+    // $availableCars = cars::where('is_available', 'yes')->get();
 
-                ->rawColumns(['action'])
-                ->make(true);
-        }
-
-
-        return view('tour_package');
+    if ($request->ajax()) {
+        // $post = Driver::get();
+        $post = Driver::get();
+        return DataTables::of($post)
+            ->addIndexColumn()
+            ->addColumn('action', function ($row) {
+                $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-success  editPost"><i class="ti-pencil"></i> EDIT</a>';
+                $btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="btn btn-danger  deletePost"><i class="ti-trash"></i> HAPUS </a>';
+                return $btn;
+            })
+            ->rawColumns(['action'])
+            ->make(true);
     }
+
+    // Pass the available cars to the view
+
+    return view('admin.Driver');
+}
 
     /**
      * Store a newly created resource in storage.
@@ -48,20 +74,15 @@ class DriverControllerr extends Controller
      */
     public function store(Request $request)
     {
-
-
-        $id = $request->id;
-        $password = $request->password;
-
-        $validator = [];
-
-
+        \Log::info($request->all()); // Log all request data
         $validator = Validator::make($request->all(), [
-
-            'banner_url' => 'required|file|mimes:jpg,jpeg,png,pdf,doc,docx|max:2048',
-            'description' => 'required',
+            'name' => 'required',
+            'photo' => 'required|mimes:jpeg,png,jpg,gif|max:2048',
+            'driving_license' => 'required|mimes:jpeg,png,jpg,gif|max:2048',
+            'expired_driving_license' => 'required',
+            'gender' => 'required',
+            'address' => 'required',
         ]);
-
 
         if ($validator->fails()) {
             return response()->json([
@@ -69,24 +90,54 @@ class DriverControllerr extends Controller
             ]);
         }
 
-
-        $post = [
-            'zone_name' => $request->zone_name,
-            'rate' => $request->rate,
-        ];
-
+        $post = $request->only([
+            'name',
+            'photo',
+            'driving_license',
+            'expired_driving_license',
+            'gender',
+            'address',
+        ]);
 
         Driver::updateOrCreate(
-            ['id' => $id],
+            ['id' => $request->id],
             $post
         );
 
 
-        return response()->json(['success' => 'Promotion saved successfully.']);
+
+        return response()->json(['success' => 'Driver saved successfully.']);
     }
 
 
+    public function update(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'photo' => 'required|mimes:jpeg,png,jpg,gif|max:2048',
+            'driving_license' => 'required|mimes:jpeg,png,jpg,gif|max:2048',
+            'expired_driving_license' => 'required',
+            'gender' => 'required',
+            'address' => 'required',
 
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()->all()]);
+        }
+
+        $Driver = Driver::findOrFail($id);
+        $Driver->update($request->only([
+            'name',
+            'photo',
+            'driving_license',
+            'expired_driving_license',
+            'gender',
+            'address',
+        ]));
+
+        return response()->json(['success' => 'Driver updated successfully.']);
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -95,7 +146,9 @@ class DriverControllerr extends Controller
      */
     public function edit($id)
     {
-        $post = Driver::find($id);
+    //     $Driver = Driver::findOrFail($id);
+    // return view('admin.Driver_edit', compact('Driver'));
+        $post = Driver::where(['id' => $id])->first();
         return response()->json($post);
     }
 
@@ -108,8 +161,9 @@ class DriverControllerr extends Controller
      */
     public function destroy($id)
     {
-        Driver::find($id)->delete();
+        Driver::where(['id' => $id])->delete();
 
-        return response()->json(['success' => 'Promotion deleted successfully.']);
+        return response()->json(['success' => 'Category deleted successfully.']);
     }
+
 }
