@@ -74,7 +74,7 @@ class DriverControllerr extends Controller
      */
     public function store(Request $request)
     {
-        \Log::info($request->all()); // Log all request data
+        // \Log::info($request->all()); // Log all request data
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'photo' => 'required|mimes:jpeg,png,jpg,gif|max:2048',
