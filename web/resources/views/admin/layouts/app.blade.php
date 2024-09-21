@@ -222,7 +222,7 @@
                         <div class="collapse" id="promotions">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('/backoffice/laporan-gaji') }}"> Promotions</a>
+                                    <a class="nav-link" href="{{ url('/backoffice/Promotions') }}"> Promotions</a>
                                 </li>
                             </ul>
                         </div>
@@ -237,12 +237,12 @@
                         <div class="collapse" id="userManagement">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('/backoffice/laporan-gaji') }}"> Users</a>
+                                    <a class="nav-link" href="{{ url('/backoffice/Users') }}"> Users</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
-                    <li class="nav-item">
+                    {{--  <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#systemLogs" aria-expanded="false" aria-controls="systemLogs">
                             <i class="icon-paper menu-icon"></i>
                             <span class="menu-title">System Logs</span>
@@ -258,7 +258,7 @@
                                 </li>
                             </ul>
                         </div>
-                    </li>
+                    </li>  --}}
 
 
 

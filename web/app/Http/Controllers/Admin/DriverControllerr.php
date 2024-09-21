@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use DataTables;
+// use DataTables;
 use App\Models\Driver;
 use App\Models\Promotion;
 use Illuminate\Http\Request;
@@ -11,9 +11,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use \Yajra\Datatables\Datatables;
 
-
-class DriverController extends Controller
+class DriverControllerr extends Controller
 {
    /**
      * Display a listing of the resource.
@@ -35,7 +35,7 @@ class DriverController extends Controller
                 ->rawColumns(['action'])
                 ->make(true);
         }
-        
+
 
         return view('tour_package');
     }
@@ -61,7 +61,7 @@ class DriverController extends Controller
             'banner_url' => 'required|file|mimes:jpg,jpeg,png,pdf,doc,docx|max:2048',
             'description' => 'required',
         ]);
-    
+
 
         if ($validator->fails()) {
             return response()->json([
@@ -75,12 +75,12 @@ class DriverController extends Controller
             'rate' => $request->rate,
         ];
 
-        
+
         Driver::updateOrCreate(
             ['id' => $id],
             $post
         );
-        
+
 
         return response()->json(['success' => 'Promotion saved successfully.']);
     }

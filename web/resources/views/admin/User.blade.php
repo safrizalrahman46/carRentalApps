@@ -75,10 +75,9 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>banner_url</th>
-                                        <th>description</th>
-
-
+                                        <th>name</th>
+                                        <th>email</th>
+                                        <th>password</th>
                                         <th width="80px">Action</th>
                                     </tr>
                                 </thead>
@@ -120,17 +119,25 @@
 
                         <div class="form-group">
 
-                            <label for="banner_url" class="col-sm-12">banner_url</label>
+                            <label for="name" class="col-sm-12">name</label>
                             <div class="col-sm-12">
-                                <input type="text" class="form-control" id="banner_url" name="banner_url"
+                                <input type="text" class="form-control" id="name" name="name"
                                     placeholder="Enter service name" value="" required>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="description" class="col-sm-12">Description</label>
+                            <label for="email" class="col-sm-12">email</label>
                             <div class="col-sm-12">
-                                <textarea class="form-control" id="description" name="description" placeholder="Enter description" rows="4" required></textarea>
+                                <textarea class="form-control" id="email" name="email" placeholder="Enter email" rows="4" required></textarea>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="password" class="col-sm-12">password</label>
+                            <div class="col-sm-12">
+                                <textarea class="form-control" id="password" name="password" placeholder="Enter password" rows="4" required></textarea>
                             </div>
                         </div>
 
@@ -185,7 +192,7 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: '{{ route('admin.Promotions.index') }}',
+                    url: '{{ route('admin.Users.index') }}',
                     data: function(data) {
                         var event = $('#filter_event_id').val();
                     }
@@ -200,15 +207,18 @@
                     },
 
                     {
-                        data: 'banner_url',
-                        name: 'banner_url'
+                        data: 'name',
+                        name: 'name'
                     },
                     {
-                        data: 'description',
-                        name: 'description'
+                        data: 'email',
+                        name: 'email'
                     },
 
-
+                    {
+                        data: 'Password',
+                        name: 'Password'
+                    },
                     {
                         data: 'action',
                         name: 'action',
@@ -230,13 +240,14 @@
 
             $('body').on('click', '.editPost', function() {
                 var id = $(this).data('id');
-                $.get("{{ route('admin.Promotions.index') }}" + '/' + id + '/edit', function(data) {
+                $.get("{{ route('admin.Users.index') }}" + '/' + id + '/edit', function(data) {
                     $('#modelHeading').html("Edit User");
                     $('#simpandata').val("edit-user");
                     $('#ajaxModelexa').modal('show');
                     $('#id').val(data.id);
-                    $('#banner_url').val(data.banner_url);
-                    $('#description').val(data.description);
+                    $('#name').val(data.name);
+                    $('#email').val(data.email);
+                    $('#password').val(data.password);
 
 
                 })
@@ -247,7 +258,7 @@
 
                 $.ajax({
                     data: $('#postForm').serialize(),
-                    url: "{{ route('admin.Promotions.store') }}",
+                    url: "{{ route('admin.Users.store') }}",
                     type: "POST",
                     dataType: 'json',
                     success: function(data) {
@@ -278,7 +289,7 @@
 
                     $.ajax({
                         type: "DELETE",
-                        url: "{{ route('admin.Promotions.store') }}" + '/' + id,
+                        url: "{{ route('admin.Users.store') }}" + '/' + id,
                         success: function(data) {
 
 

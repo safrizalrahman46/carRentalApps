@@ -13,6 +13,8 @@ use App\Http\Controllers\Admin\ServicesController;
 use App\Http\Controllers\Admin\ChargesController;
 use App\Http\Controllers\Admin\TourPackagesController;
 use App\Http\Controllers\Admin\ZonesController;
+use App\Http\Controllers\Admin\PromotionsController;
+use App\Http\Controllers\Admin\UsersController;
 
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\UserController;
@@ -191,6 +193,31 @@ Route::group(['middleware' => ['auth']], function () {
 
     });
 
+
+    Route::prefix('backoffice')->group(function () {
+        Route::get('/Promotions', [PromotionsController::class, 'index'])->name('admin.Promotions.index');
+        Route::get('/Promotions/create', [PromotionsController::class, 'create'])->name('admin.Promotions.create');
+        Route::post('/Promotions', [PromotionsController::class, 'store'])->name('admin.Promotions.store');
+        Route::get('/Promotions/{id}/edit', [PromotionsController::class, 'edit'])->name('admin.Promotions.edit');
+        Route::put('/Promotions/{id}', [PromotionsController::class, 'update'])->name('admin.Promotions.update');
+        Route::delete('/Promotions/{id}', [PromotionsController::class, 'destroy'])->name('admin.Promotions.destroy');
+        // Route::get('/export-master-supplier', [CarAvailabilityController::class, 'export_tabel_car_availability'])->name('Export.car_availability');
+        // Route::get('/export-master-supplier-pdf', [CarAvailabilityController::class, 'export_tabel_car_availability_pdf'])->name('Export.car_availabilityPDF');
+
+    });
+
+
+    Route::prefix('backoffice')->group(function () {
+        Route::get('/Users', [UsersController::class, 'index'])->name('admin.Users.index');
+        Route::get('/Users/create', [UsersController::class, 'create'])->name('admin.Users.create');
+        Route::post('/Users', [UsersController::class, 'store'])->name('admin.Users.store');
+        Route::get('/Users/{id}/edit', [UsersController::class, 'edit'])->name('admin.Users.edit');
+        Route::put('/Users/{id}', [UsersController::class, 'update'])->name('admin.Users.update');
+        Route::delete('/Users/{id}', [UsersController::class, 'destroy'])->name('admin.Users.destroy');
+        // Route::get('/export-master-supplier', [CarAvailabilityController::class, 'export_tabel_car_availability'])->name('Export.car_availability');
+        // Route::get('/export-master-supplier-pdf', [CarAvailabilityController::class, 'export_tabel_car_availability_pdf'])->name('Export.car_availabilityPDF');
+
+    });
 
     Route::prefix('backoffice')->group(function () {
         Route::get('/Zones', [ZonesController::class, 'index'])->name('admin.Zones.index');
