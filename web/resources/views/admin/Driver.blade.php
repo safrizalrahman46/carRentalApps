@@ -204,6 +204,8 @@
                     { data: 'photo', name: 'photo', render: function(data) {
                         return '<img src="/storage/' + data + '" alt="Photo" style="width:50px;height:50px;">';
                     }},
+
+
                     { data: 'driving_license', name: 'driving_license', render: function(data) {
                         return '<img src="/storage/' + data + '" alt="License" style="width:50px;height:50px;">';
                     }},

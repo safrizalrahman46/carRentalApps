@@ -76,14 +76,14 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Car</th>
-                                        <th>type</th>
-                                        <th>capacity</th>
-                                        <th>price_per_day</th>
-                                        <th>price_per_km</th>
-                                        <th>price_per_area</th>
-                                        <th>availability_start_time</th>
-                                        <th>availability_end_time</th>
-                                        <th>is_available</th>
+                                        <th>Type</th>
+                                        <th>Capacity</th>
+                                        <th>Price per Day</th>
+                                        <th>Price per KM</th>
+                                        <th>Price per Area</th>
+                                        <th>Availability Start Time</th>
+                                        <th>Availability End Time</th>
+                                        <th>Is Available</th>
                                         <th width="80px">Action</th>
                                     </tr>
                                 </thead>
@@ -120,7 +120,7 @@
 
                     <form id="postForm" name="postForm" class="form-horizontal">
                         <input type="hidden" name="id" id="id">
-{{-- 
+{{--
                         <div class="form-group">
                             <label for="car" class="col-sm-12">car</label>
                             <div class="col-sm-12">

@@ -40,7 +40,7 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <h4 class="card-title">Car Availability List</h4>
+                        <h4 class="card-title">Rental Rates</h4>
 
 
                         <div class="col-md-12">
@@ -75,10 +75,10 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>car_id</th>
-                                        <th>date </th>
-                                        <th>daily_rate</th>
-                                        <th>season</th>
+                                        <th>Car</th>
+                                        <th>Date</th>
+                                        <th>Daily Rate</th>
+                                        <th>Season</th>
                                         <th width="80px">Action</th>
                                     </tr>
                                 </thead>

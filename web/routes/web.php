@@ -241,6 +241,9 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/Driver/{id}/edit', [DriverControllerr::class, 'edit'])->name('admin.Driver.edit');
         Route::put('/Driver/{id}', [DriverControllerr::class, 'update'])->name('admin.Driver.update');
         Route::delete('/Driver/{id}', [DriverControllerr::class, 'destroy'])->name('admin.Driver.destroy');
+        // Route::post('/drivers/store', [DriverController::class, 'store'])->name('drivers.store');
+        // Route::patch('/drivers/update/{id}', [DriverController::class, 'update'])->name('drivers.update');
+
         // Route::get('/export-master-supplier', [CarAvailabilityController::class, 'export_tabel_car_availability'])->name('Export.car_availability');
         // Route::get('/export-master-supplier-pdf', [CarAvailabilityController::class, 'export_tabel_car_availability_pdf'])->name('Export.car_availabilityPDF');
 

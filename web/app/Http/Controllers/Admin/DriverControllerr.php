@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Driver;
 use \Yajra\Datatables\Datatables;
 // use App\DataTables;
+use Illuminate\Support\Facades\Storage;
 
 
 use Session;
@@ -90,6 +91,25 @@ class DriverControllerr extends Controller
             ]);
         }
 
+
+        // Store the photo
+        if ($request->hasFile('photo')) {
+            $path_photo = $request->file('photo')->store('public/photos');
+        }
+
+        // Store the driving license image
+        if ($request->hasFile('driving_license')) {
+            $path_driving_license = $request->file('driving_license')->store('public/driving_licenses');
+        }
+
+        // Collect data and save
+        $data = array_merge($request->only([
+            'name', 'expired_driving_license', 'gender', 'address'
+        ]), [
+            'photo' => $path_photo ?? null,
+            'driving_license' => $path_driving_license ?? null,
+        ]);
+
         $post = $request->only([
             'name',
             'photo',
@@ -124,6 +144,20 @@ class DriverControllerr extends Controller
 
         if ($validator->fails()) {
             return response()->json(['error' => $validator->errors()->all()]);
+        }
+
+        $Driver = Driver::findOrFail($id);
+
+        // Update the photo
+        if ($request->hasFile('photo')) {
+            $path_photo = $request->file('photo')->store('public/photos');
+            $Driver->photo = $path_photo;
+        }
+
+        // Update the driving license image
+        if ($request->hasFile('driving_license')) {
+            $path_driving_license = $request->file('driving_license')->store('public/driving_licenses');
+            $Driver->driving_license = $path_driving_license;
         }
 
         $Driver = Driver::findOrFail($id);

@@ -75,16 +75,16 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>user_id</th>
-                                        <th>car_id</th>
-                                        <th>pickup_location</th>
-                                        <th>dropoff_location</th>
-                                        <th>start_datetime</th>
-                                        <th>end_datetime</th>
-                                        <th>code_booking</th>
-                                        <th>status</th>
-                                        <th>booking_group_id</th>
-                                        <th>booking_duration</th>
+                                        <th>User ID</th>
+                                        <th>Car ID</th>
+                                        <th>Pickup Location</th>
+                                        <th>Dropoff Location</th>
+                                        <th>Start Datetime</th>
+                                        <th>End Datetime</th>
+                                        <th>Booking Code</th>
+                                        <th>Status</th>
+                                        <th>Booking Group ID</th>
+                                        <th>Booking Duration</th>
                                         <th width="80px">Action</th>
                                     </tr>
                                 </thead>
