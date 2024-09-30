@@ -111,7 +111,7 @@
                         <div class="collapse" id="CarManagement">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('/backoffice/ListCar ') }}">List Car</a>
+                                    <a class="nav-link" href="{{ url('/backoffice/Cars ') }}">Car</a>
 
                                 </li>
                                 <li class="nav-item">

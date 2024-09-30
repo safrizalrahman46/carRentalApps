@@ -75,16 +75,20 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>User ID</th>
-                                        <th>Car ID</th>
+                                        <th>User</th>
+                                        <th>Car</th>
                                         <th>Pickup Location</th>
                                         <th>Dropoff Location</th>
                                         <th>Start Datetime</th>
                                         <th>End Datetime</th>
-                                        <th>Booking Code</th>
+                                        <th>Code Booking </th>
                                         <th>Status</th>
-                                        <th>Booking Group ID</th>
+                                        <th>Booking Group</th>
                                         <th>Booking Duration</th>
+                                        <th>Total Price</th>
+                                        <th>Total Deposit</th>
+                                        <th>Total Payment</th>
+                                        <th>Total Additional Price</th>
                                         <th width="80px">Action</th>
                                     </tr>
                                 </thead>
@@ -218,6 +222,40 @@
                             </div>
                         </div>
 
+
+                        <div class="form-group">
+                            <label for="total_price" class="col-sm-12">Total Price</label>
+                            <div class="col-sm-12">
+                                <input type="number" step="0.01" class="form-control" id="total_price" name="total_price"
+                                    placeholder="Enter Total Price" value="" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="total_deposit" class="col-sm-12">Total Deposit</label>
+                            <div class="col-sm-12">
+                                <input type="number" step="0.01" class="form-control" id="total_deposit" name="total_deposit"
+                                    placeholder="Enter Total Deposit" value="" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="total_payment" class="col-sm-12">Total Payment</label>
+                            <div class="col-sm-12">
+                                <input type="number" step="0.01" class="form-control" id="total_payment" name="total_payment"
+                                    placeholder="Enter Total Payment" value="" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="total_additional_price" class="col-sm-12">Total Additional Price</label>
+                            <div class="col-sm-12">
+                                <input type="number" step="0.01" class="form-control" id="total_additional_price" name="total_additional_price"
+                                    placeholder="Enter Total Additional Price" value="" required>
+                            </div>
+                        </div>
+
+
                         <div class="form-group">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                             <button type="submit" class="btn btn-primary" id="simpandata" value="create">Save
@@ -317,6 +355,22 @@
                         name: 'booking_duration'
                     },
                     {
+                        data: 'total_price',
+                        name: 'total_price'
+                    },
+                    {
+                        data: 'total_deposit',
+                        name: 'total_deposit'
+                    },
+                    {
+                        data: 'total_payment',
+                        name: 'total_payment'
+                    },
+                    {
+                        data: 'total_additional_price',
+                        name: 'total_additional_price'
+                    },
+                    {
                         data: 'action',
                         name: 'action',
                         orderable: false,
@@ -351,6 +405,10 @@
                     $('#code_booking').val(data.code_booking);
                     $('#booking_group_id').val(data.booking_group_id);
                     $('#booking_duration').val(data.booking_duration);
+                    $('#total_price').val(data.total_price);
+                    $('#total_deposit').val(data.total_deposit);
+                    $('#total_payment').val(data.total_payment);
+                    $('#total_additional_price').val(data.total_additional_price);
 
                 })
             });

@@ -23,6 +23,11 @@ class cars extends Model
         'availability_start_time',
         'availability_end_time',
         'is_available',
+        'brand',
+        'transmission',
+        'buy_year',
+        'photo',
+        'seat',
 
     ];
 

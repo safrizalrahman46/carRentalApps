@@ -96,15 +96,15 @@ Route::group(['middleware' => ['auth']], function () {
 
     // ////Masyer Jenis Transaksi
     Route::prefix('backoffice')->group(function () {
-        Route::get('/ListCar', [CarsController::class, 'index'])->name('admin.ListCar.index');
-        Route::get('/ListCar/create', [CarsController::class, 'create'])->name('admin.ListCar.create');
-        Route::post('/ListCar', [CarsController::class, 'store'])->name('admin.ListCar.store');
-        Route::get('/ListCar/{id}/edit', [CarsController::class, 'edit'])->name('admin.ListCar.edit');
-        Route::put('/ListCar/{id}', [CarsController::class, 'update'])->name('admin.ListCar.update');
-        Route::delete('/ListCar/{id}', [CarsController::class, 'destroy'])->name('admin.ListCar.destroy');
+        Route::get('/Cars', [CarsController::class, 'index'])->name('admin.Cars.index');
+        Route::get('/Cars/create', [CarsController::class, 'create'])->name('admin.Cars.create');
+        Route::post('/Cars', [CarsController::class, 'store'])->name('admin.Cars.store');
+        Route::get('/Cars/{id}/edit', [CarsController::class, 'edit'])->name('admin.Cars.edit');
+        Route::put('/Cars/{id}', [CarsController::class, 'update'])->name('admin.Cars.update');
+        Route::delete('/Cars/{id}', [CarsController::class, 'destroy'])->name('admin.Cars.destroy');
 
-        Route::get('/export-ListCar', [CarsController::class, 'export_tabel_ListCar'])->name('Export.ListCar');
-        Route::get('/export-ListCar-pdf', [CarsController::class, 'export_tabel_ListCar_pdf'])->name('Export.ListCarPDF');
+        Route::get('/export-Cars', [CarsController::class, 'export_tabel_Cars'])->name('Export.Cars');
+        Route::get('/export-Cars-pdf', [CarsController::class, 'export_tabel_Cars_pdf'])->name('Export.CarsPDF');
 
     });
 

@@ -14,7 +14,7 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
-        
+
         // if (Auth::attempt($credentials)) {
         //     $user = Auth::user();
 
@@ -28,11 +28,11 @@ class AuthController extends Controller
         //         return redirect()->route('staf.dashboard');
         //     }
         // }
-        
+
         return redirect('/')->withErrors(['email' => 'Invalid credentials']);
     }
 
-    
+
 
     public function index()
     {
@@ -55,7 +55,7 @@ class AuthController extends Controller
         $this->validate($request, [
             'email' => 'required|email',
             'password' => 'required',
-        ]);     
+        ]);
 
         $kredensil = $request->only('email', 'password');
 
@@ -75,7 +75,7 @@ class AuthController extends Controller
         FacadesSession::flush();
         Auth::logout();
         return Redirect('/backoffice/login');
-        
+
         // return view('admin.login');
     }
 
@@ -85,9 +85,9 @@ class AuthController extends Controller
         FacadesSession::flush();
         Auth::logout();
         return Redirect('/');
-        
+
         // return view('admin.login');
     }
 
-    
+
 }

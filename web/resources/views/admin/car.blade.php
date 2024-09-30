@@ -40,7 +40,7 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <h4 class="card-title">List Car</h4>
+                        <h4 class="card-title">Car</h4>
 
 
                         <div class="col-md-12">
@@ -78,6 +78,11 @@
                                         <th>Car</th>
                                         <th>Type</th>
                                         <th>Capacity</th>
+                                        <th>Brand</th>
+                                        <th>Transmission</th>
+                                        <th>Buy Year</th>
+                                        <th>Photo</th>
+                                        <th>Seat</th>
                                         <th>Price per Day</th>
                                         <th>Price per KM</th>
                                         <th>Price per Area</th>
@@ -135,72 +140,98 @@
                             <div class="col-sm-12">
                                 <input type="text" class="form-control" id="car" name="car" placeholder="Enter car" required>
                             </div>
+                        </div>
 
                         <div class="form-group">
-                            <label for="type" class="col-sm-12">Type</label>
+                            <label for="type" class="col-sm-12">Driving Type</label>
                             <div class="col-sm-12">
                                 <select class="form-control" id="type" name="type" required>
-                                    <option value="" disabled selected>Pilih Jenis Transaksi</option>
+                                    <option value="" disabled selected>Pilih Driving Type</option>
                                     <option value="self_drive">self_drive</option>
                                     <option value="with_driver">with_driver</option>
                                 </select>
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <label for="capacity" class="col-sm-12">Capacity</label>
+                            <div class="col-sm-12">
+                                <input type="number" class="form-control" id="capacity" name="capacity" placeholder="Enter capacity" value="" required>
+                            </div>
+                        </div>
 
                         <div class="form-group">
-                            <label for="capacity" class="col-sm-12">capacity</label>
+                            <label for="brand" class="col-sm-12">Brand</label>
                             <div class="col-sm-12">
-                                <input type="number" class="form-control" id="capacity" name="capacity"
-                                    placeholder="Enter capacity" value="" required>
+                                <input type="text" class="form-control" id="brand" name="brand" placeholder="Enter brand" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="transmission" class="col-sm-12">Transmission</label>
+                            <div class="col-sm-12">
+                                <select class="form-control" id="transmission" name="transmission" required>
+                                    <option value="" disabled selected>Select Transmission</option>
+                                    <option value="Automatic">Automatic</option>
+                                    <option value="Manual">Manual</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="buy_year" class="col-sm-12">Buy Year</label>
+                            <div class="col-sm-12">
+                                <input type="number" class="form-control" id="buy_year" name="buy_year" placeholder="Enter buy year" value="">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="photo" class="col-sm-12">Photo</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" id="photo" name="photo" required>
                             </div>
                         </div>
 
 
                         <div class="form-group">
-                            <label for="price_per_day" class="col-sm-12">price_per_day</label>
+                            <label for="seat" class="col-sm-12">Seat</label>
                             <div class="col-sm-12">
-                                <input type="number" class="form-control" id="price_per_day" name="price_per_day"
-                                    placeholder="Enter price_per_day" value="" required>
+                                <input type="number" class="form-control" id="seat" name="seat" placeholder="Enter number of seats" value="">
                             </div>
                         </div>
 
-
-
                         <div class="form-group">
-                            <label for="price_per_km" class="col-sm-12">price_per_km</label>
+                            <label for="price_per_day" class="col-sm-12">Price per Day</label>
                             <div class="col-sm-12">
-                                <input type="number" class="form-control" id="price_per_km" name="price_per_km"
-                                    placeholder="Enter price_per_km" value="" required>
+                                <input type="number" class="form-control" id="price_per_day" name="price_per_day" placeholder="Enter price per day" value="" required>
                             </div>
                         </div>
 
-
                         <div class="form-group">
-                            <label for="price_per_area" class="col-sm-12">price_per_area</label>
+                            <label for="price_per_km" class="col-sm-12">Price per KM</label>
                             <div class="col-sm-12">
-                                <input type="number" class="form-control" id="price_per_area" name="price_per_area"
-                                    placeholder="Enter price_per_area" value="" required>
+                                <input type="number" class="form-control" id="price_per_km" name="price_per_km" placeholder="Enter price per KM" value="" required>
                             </div>
                         </div>
 
-
                         <div class="form-group">
-                            <label for="availability_start_time" class="col-sm-12">availability_start_time</label>
+                            <label for="price_per_area" class="col-sm-12">Price per Area</label>
                             <div class="col-sm-12">
-                                <input type="time" class="form-control" id="availability_start_time"
-                                    name="availability_start_time" placeholder="Enter availability_start_time"
-                                    value="" required>
+                                <input type="number" class="form-control" id="price_per_area" name="price_per_area" placeholder="Enter price per area" value="" required>
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <label for="availability_start_time" class="col-sm-12">Availability Start Time</label>
+                            <div class="col-sm-12">
+                                <input type="time" class="form-control" id="availability_start_time" name="availability_start_time" placeholder="Enter availability start time" value="" required>
+                            </div>
+                        </div>
 
                         <div class="form-group">
-                            <label for="availability_end_time" class="col-sm-12">availability_end_time</label>
+                            <label for="availability_end_time" class="col-sm-12">Availability End Time</label>
                             <div class="col-sm-12">
-                                <input type="time" class="form-control" id="availability_end_time"
-                                    name="availability_end_time" placeholder="Enter availability_end_time" value=""
-                                    required>
+                                <input type="time" class="form-control" id="availability_end_time" name="availability_end_time" placeholder="Enter availability end time" value="" required>
                             </div>
                         </div>
 
@@ -208,9 +239,9 @@
                             <label for="is_available" class="col-sm-12">Is Available</label>
                             <div class="col-sm-12">
                                 <select class="form-control" id="is_available" name="is_available" required>
-                                    <option value="" disabled selected>Pilih Jenis Transaksi</option>
+                                    <option value="" disabled selected>Select Availability</option>
                                     <option value="Available">Available</option>
-                                    <option value="Not_Available">Not_Available</option>
+                                    <option value="Not_Available">Not Available</option>
                                 </select>
                             </div>
                         </div>
@@ -252,7 +283,7 @@
 
 
                 'ajax': {
-                    'url': '{{ route('admin.ListCar.index') }}',
+                    'url': '{{ route('admin.Cars.index') }}',
                     'data': function(data) {
                         var event = $('#filter_event_id').val();
                     }
@@ -271,57 +302,27 @@
                         name: 'DT_RowIndex'
                     },
 
-
-
-                    {
-                        data: 'car',
-                        name: 'car'
-                    },
-
-
-                    {
-                        data: 'type',
-                        name: 'type'
-                    },
-
-
-                    {
-                        data: 'capacity',
-                        name: 'capacity'
-                    },
-
-
-                    {
-                        data: 'price_per_day',
-                        name: 'price_per_day'
-                    },
-
-
-                    {
-                        data: 'price_per_km',
-                        name: 'price_per_km'
-                    },
-
-
-                    {
-                        data: 'price_per_area',
-                        name: 'price_per_area'
-                    },
-
-                    {
-                        data: 'availability_start_time',
-                        name: 'availability_start_time'
-                    },
-
-                    {
-                        data: 'availability_end_time',
-                        name: 'availability_end_time'
-                    },
-
-
+                    {data: 'car', name: 'car'},
+                    {data: 'type', name: 'type'},
+                    {data: 'capacity', name: 'capacity'},
+                    {data: 'brand', name: 'brand'},
+                    {data: 'transmission', name: 'transmission'},
+                    {data: 'buy_year', name: 'buy_year'},
+                    {data: 'photo', name: 'photo'},
+                    {data: 'seat', name: 'seat'},
+                    {data: 'price_per_day', name: 'price_per_day'},
+                    {data: 'price_per_km', name: 'price_per_km'},
+                    {data: 'price_per_area', name: 'price_per_area'},
+                    {data: 'availability_start_time', name: 'availability_start_time'},
+                    {data: 'availability_end_time', name: 'availability_end_time'},
                     {
                         data: 'is_available',
-                        name: 'is_available'
+                        name: 'is_available',
+                        render: function(data) {
+                            return data === 'Available' ?
+                                '<span class="badge badge-success">Available</span>' :
+                                '<span class="badge badge-danger">Not Available</span>';
+                        }
                     },
 
 
@@ -340,13 +341,13 @@
                 $('#simpandata').val("create-post");
                 $('#id').val('');
                 $('#postForm').trigger("reset");
-                $('#modelHeading').html("Tambah User");
+                $('#modelHeading').html("Add Data");
                 $('#ajaxModelexa').modal('show');
             });
 
             $('body').on('click', '.editPost', function() {
                 var id = $(this).data('id');
-                $.get("{{ route('admin.ListCar.index') }}" + '/' + id + '/edit', function(data) {
+                $.get("{{ route('admin.Cars.index') }}" + '/' + id + '/edit', function(data) {
                     $('#modelHeading').html("Edit User");
                     $('#simpandata').val("edit-user");
                     $('#ajaxModelexa').modal('show');
@@ -359,8 +360,13 @@
                     $('#price_per_area').val(data.price_per_area);
                     $('#availability_start_time').val(data.availability_start_time);
                     $('#availability_end_time').val(data.availability_end_time);
-                    $('#is_available').val(data
-                        .is_available); // Make sure `data.is_available` matches the option values
+                    $('#brand').val(data.brand);
+                    $('#transmision').val(data.transmision);
+                    $('#buy_year').val(data.buy_year);
+                    $('#seat').val(data.seat);
+                    $('#photo').val(data.photo);
+
+
                 })
             });
 
@@ -369,16 +375,18 @@
 
                 $.ajax({
                     data: $('#postForm').serialize(),
-                    url: "{{ route('admin.ListCar.store') }}",
+                    url: "{{ route('admin.Cars.store') }}",
                     type: "POST",
                     dataType: 'json',
                     success: function(data) {
                         if ($.isEmptyObject(data.error)) {
                             $('#postForm').trigger("reset");
                             $('#ajaxModelexa').modal('hide');
+
                             $.getScript('{{ asset('/public/notify.min.js') }}', function() {
                                 $.notify("Tambah data success", "success");
                             });
+
                             table.draw();
                         } else {
                             printErrorMsg(data.error);
@@ -389,7 +397,6 @@
                         $('#simpandata').html('Save Changes');
                     }
                 });
-
             });
 
             $('body').on('click', '.deletePost', function() {
@@ -399,7 +406,7 @@
 
                     $.ajax({
                         type: "DELETE",
-                        url: "{{ route('admin.ListCar.store') }}" + '/' + id,
+                        url: "{{ route('admin.Cars.store') }}" + '/' + id,
                         success: function(data) {
 
 

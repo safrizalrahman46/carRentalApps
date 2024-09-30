@@ -121,6 +121,11 @@ class BookingsController extends Controller
                 'code_booking' => 'required',
                 'booking_group_id' => 'required',
                 'booking_duration' => 'required',
+                'total_price' => 'required',
+                'total_deposit' => 'required',
+                'total_payment' => 'required',
+                'total_additional_price' => 'required',
+
         ]);
 
         if ($validator->fails()) {
@@ -140,6 +145,11 @@ class BookingsController extends Controller
             'code_booking',
             'booking_group_id',
             'booking_duration',
+            'total_price',
+            'total_deposit',
+            'total_payment',
+            'total_additional_price',
+
         ]);
 
         Booking::updateOrCreate(
@@ -166,6 +176,11 @@ class BookingsController extends Controller
                 'code_booking' => 'required',
                 'booking_group_id' => 'required',
                 'booking_duration' => 'required',
+                'total_price' => 'required',
+                'total_deposit' => 'required',
+                'total_payment' => 'required',
+                'total_additional_price' => 'required',
+
 
         ]);
 
@@ -185,6 +200,11 @@ class BookingsController extends Controller
             'code_booking',
             'booking_group_id',
             'booking_duration',
+            'total_price',
+            'total_deposit',
+            'total_payment',
+            'total_additional_price',
+
         ]));
 
         return response()->json(['success' => 'Booking updated successfully.']);

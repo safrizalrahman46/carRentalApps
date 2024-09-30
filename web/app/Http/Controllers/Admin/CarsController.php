@@ -80,6 +80,11 @@ class CarsController extends Controller
             'availability_start_time'=> 'required',
             'availability_end_time'  => 'required',
             'is_available'           => 'required',
+            'brand'                  => 'required',
+            'transmission'           => 'required',
+            'buy_year'               => 'required',
+            'photo' => 'required',
+            'seat'                   => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -98,12 +103,21 @@ class CarsController extends Controller
             'availability_start_time',
             'availability_end_time'  ,
             'is_available'           ,
+            'brand',
+            'transmission',
+            'buy_year',
+            'photo',
+            'seat',
         ]);
 
         // die(json_encode($post));
-        cars::updateOrCreate(
-            $post,
+        // cars::updateOrCreate(
+        //     $post,
 
+        // );
+        cars::updateOrCreate(
+            ['id' => $request->id],
+            $post
         );
 
         return response()->json(['success' => 'cars saved successfully.']);
@@ -122,6 +136,11 @@ class CarsController extends Controller
             'availability_start_time'=> 'required',
             'availability_end_time'  => 'required',
             'is_available'           => 'required',
+            'brand'                  => 'required',
+            'transmission'           => 'required',
+            'buy_year'               => 'required',
+            'photo' => 'required',
+            'seat'                   => 'required',
 
         ]);
 
@@ -139,7 +158,13 @@ class CarsController extends Controller
         'price_per_area'         ,
         'availability_start_time',
         'availability_end_time'  ,
-        'is_available'           , ]));
+        'is_available'           ,
+        'brand',
+        'transmission',
+        'buy_year',
+        'photo',
+        'seat',
+    ]));
 
         return response()->json(['success' => 'cars updated successfully.']);
     }

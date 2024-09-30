@@ -27,6 +27,10 @@ class Booking extends Model
         'code_booking',
         'booking_group_id',
         'booking_duration',
+        'total_price',
+        'total_deposit',
+        'total_payment',
+        'total_additional_price',
 
     ];
 

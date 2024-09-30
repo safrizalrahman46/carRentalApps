@@ -40,7 +40,7 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <h4 class="card-title">Car Availability List</h4>
+                        <h4 class="card-title">Car Availability </h4>
 
 
                         <div class="col-md-12">
@@ -75,7 +75,7 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Car ID</th>
+                                        <th>Car</th>
                                         <th>Start Datetime</th>
                                         <th>End Datetime</th>
                                         <th>Status</th>
