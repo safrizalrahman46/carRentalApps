@@ -75,11 +75,10 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>booking_id</th>
-                                        <th>status</th>
-                                        <th>notes</th>
-                                        <th>processed_at</th>
-
+                                        <th>Booking</th>
+                                        <th>Notes</th>
+                                        <th>Processed at</th>
+                                        <th>Status</th>
                                         <th width="80px">Action</th>
                                     </tr>
                                 </thead>
@@ -129,7 +128,7 @@
 
                         <div class="form-group">
                             <div class="col-sm-12">
-                                <label for="booking_id">Booking ID</label>
+                                <label for="booking_id">Booking</label>
                                 <select id="booking_id" name="booking_id" class="form-control">
                                     @foreach ($Booking as $Bookingitem)
                                         <option value="{{ $Bookingitem->id }}">{{ $Bookingitem->code_booking }}</option>
@@ -173,7 +172,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="processed_at" class="col-sm-12">processed_at</label>
+                            <label for="processed_at" class="col-sm-12">Processed at</label>
                             <div class="col-sm-12">
                                 <input type="datetime-local" class="form-control" id="processed_at" name="processed_at"
                                     placeholder="Enter DropOff" value="" required>
@@ -267,7 +266,7 @@
                 $('#simpandata').val("create-post");
                 $('#id').val('');
                 $('#postForm').trigger("reset");
-                $('#modelHeading').html("Tambah User");
+                $('#modelHeading').html("Add Data Manage Booking");
                 $('#ajaxModelexa').modal('show');
             });
 

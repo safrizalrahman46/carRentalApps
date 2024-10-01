@@ -35,8 +35,8 @@ class BookingDepositController extends Controller
                 ->make(true);
         }
 
-        $Booking = Booking::all();
-        return view('admin.BookingDeposits', compact('Booking'));
+        $Bookings = Booking::all();
+        return view('admin.BookingDeposits', compact('Bookings'));
     }
 
     /**

@@ -40,7 +40,7 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <h4 class="card-title">Manage Booking</h4>
+                        <h4 class="card-title">Booking Deposit</h4>
 
 
                         <div class="col-md-12">
@@ -75,7 +75,7 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Booking ID</th>
+                                        <th>Booking</th>
                                         <th>Deposit Amount</th>
                                         <th>Status</th>
                                         <th width="80px">Action</th>
@@ -118,9 +118,9 @@
 
                         <div class="form-group">
                             <div class="col-sm-12">
-                                <label for="booking_id">Booking ID</label>
+                                <label for="booking_id">Booking</label>
                                 <select id="booking_id" name="booking_id" class="form-control">
-                                    @foreach ($Booking as $Bookingitem)
+                                    @foreach ($Bookings as $Bookingitem)
                                         <option value="{{ $Bookingitem->id }}">{{ $Bookingitem->code_booking }}</option>
                                     @endforeach
                                 </select>
@@ -199,7 +199,7 @@
                         data: 'DT_RowIndex',
                         name: 'DT_RowIndex'
                     },
-                    { data: 'booking.code_booking', name: 'booking.code_booking' },
+                    { data: 'booking_id ', name: 'booking_id ' },
                     { data: 'deposit_amount', name: 'deposit_amount' },
                     {  data: 'status',
                     name: 'status',
@@ -228,7 +228,7 @@
                 $('#simpandata').val("create-post");
                 $('#id').val('');
                 $('#postForm').trigger("reset");
-                $('#modelHeading').html("Tambah User");
+                $('#modelHeading').html("Add Data Booking Deposit");
                 $('#ajaxModelexa').modal('show');
             });
 
