@@ -40,7 +40,7 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <h4 class="card-title">Bookings</h4>
+                        <h4 class="card-title">Booking</h4>
 
 
                         <div class="col-md-12">
@@ -129,7 +129,7 @@
 
                         <div class="form-group">
 
-                            <label for="code_booking" class="col-sm-12">code_booking</label>
+                            <label for="code_booking" class="col-sm-12">Code Booking</label>
                             <div class="col-sm-12">
                                 <input type="text" class="form-control" id="code_booking" name="code_booking"
                                     placeholder="Enter Pickup" value="" required>
@@ -138,7 +138,7 @@
 
                         <div class="form-group">
                             <div class="col-sm-12">
-                                <label for="user_id">User ID</label>
+                                <label for="user_id">User</label>
                                 <select id="user_id" name="user_id" class="form-control">
                                     @foreach ($User as $Useritem)
                                         <option value="{{ $Useritem->id }}">{{ $Useritem->name }}</option>
@@ -150,7 +150,7 @@
 
                         <div class="form-group">
                             <div class="col-sm-12">
-                                <label for="car_id">car_id </label>
+                                <label for="car_id">Car</label>
                                 <select id="car_id" name="car_id" class="form-control">
                                     @foreach ($cars as $carsitem)
                                         <option value="{{ $carsitem->id }}">{{ $carsitem->car }}</option>
@@ -207,15 +207,15 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="booking_group_id" class="col-sm-12">booking_group_id</label>
+                            <label for="booking_group_id" class="col-sm-12">Booking Group</label>
                             <div class="col-sm-12">
-                                <input type="text" class="form-control" id="booking_group_id" name="booking_group_id"
+                                <input type="number" class="form-control" id="booking_group_id" name="booking_group_id"
                                     placeholder="Enter booking_group_id" value="" required>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="booking_duration" class="col-sm-12">booking_duration</label>
+                            <label for="booking_duration" class="col-sm-12">Booking Duration</label>
                             <div class="col-sm-12">
                                 <input type="number" class="form-control" id="booking_duration" name="booking_duration"
                                     placeholder="Enter booking_duration" value="" required>
@@ -384,7 +384,7 @@
                 $('#simpandata').val("create-post");
                 $('#id').val('');
                 $('#postForm').trigger("reset");
-                $('#modelHeading').html("Tambah User");
+                $('#modelHeading').html("Add Data Booking");
                 $('#ajaxModelexa').modal('show');
             });
 

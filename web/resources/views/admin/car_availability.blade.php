@@ -123,7 +123,7 @@
                         <div class="form-group">
 
                             <div class="col-sm-12">
-                                <label for="car_id">car_id </label>
+                                <label for="car_id">Car</label>
                                 <select id="car_id" name="car_id" class="form-control">
                                     @foreach ($cars as $carsitem)
                                         <option value="{{ $carsitem->id }}">{{ $carsitem->car }}</option>
@@ -269,7 +269,7 @@
                 $('#simpandata').val("create-post");
                 $('#id').val('');
                 $('#postForm').trigger("reset");
-                $('#modelHeading').html("Tambah User");
+                $('#modelHeading').html("Add Data Car Availibilty");
                 $('#ajaxModelexa').modal('show');
             });
 

@@ -121,7 +121,7 @@
                         <div class="form-group">
 
                             <div class="col-sm-12">
-                                <label for="car_id">car_id </label>
+                                <label for="car_id">Car </label>
                             <select id="car_id" name="car_id" class="form-control">
                                 @foreach($cars as $carsitem)
                                     <option value="{{ $carsitem->id }}">{{ $carsitem->car }}</option>
@@ -139,7 +139,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="daily_rate" class="col-sm-12">daily_rate</label>
+                            <label for="daily_rate" class="col-sm-12">Daily Rate</label>
                             <div class="col-sm-12">
                                 <input type="number" class="form-control" id="daily_rate" name="daily_rate"
                                     placeholder="Enter Daily Rate" value="" required>
@@ -147,7 +147,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="season" class="col-sm-12">season</label>
+                            <label for="season" class="col-sm-12">Season</label>
                             <div class="col-sm-12">
                                 <select class="form-control" id="season" name="season" required>
                                     <option value="" disabled selected>Select Status</option>
@@ -239,7 +239,7 @@
                 $('#simpandata').val("create-post");
                 $('#id').val('');
                 $('#postForm').trigger("reset");
-                $('#modelHeading').html("Tambah User");
+                $('#modelHeading').html("Add Data Rental Rates");
                 $('#ajaxModelexa').modal('show');
             });
 

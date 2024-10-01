@@ -76,7 +76,7 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Car</th>
-                                        <th>Type</th>
+                                        <th>Driving Type</th>
                                         <th>Capacity</th>
                                         <th>Brand</th>
                                         <th>Transmission</th>
@@ -303,7 +303,14 @@
                     },
 
                     {data: 'car', name: 'car'},
-                    {data: 'type', name: 'type'},
+                    {data: 'type', name: 'type',
+                    render: function(data) {
+                        return data === 'self_drive' ?
+                            '<span class="badge badge-danger">self_drive</span>' :
+                            '<span class="badge badge-primary">with_driver</span>';
+                    }
+
+                    },
                     {data: 'capacity', name: 'capacity'},
                     {data: 'brand', name: 'brand'},
                     {data: 'transmission', name: 'transmission'},
@@ -341,7 +348,7 @@
                 $('#simpandata').val("create-post");
                 $('#id').val('');
                 $('#postForm').trigger("reset");
-                $('#modelHeading').html("Add Data");
+                $('#modelHeading').html("Add Data Car");
                 $('#ajaxModelexa').modal('show');
             });
 

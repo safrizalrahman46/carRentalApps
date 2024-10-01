@@ -40,7 +40,7 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <h4 class="card-title">Manage Booking</h4>
+                        <h4 class="card-title">Driver</h4>
 
 
                         <div class="col-md-12">
@@ -226,7 +226,7 @@
                 $('#simpandata').val("create-post");
                 $('#id').val('');
                 $('#postForm').trigger("reset");
-                $('#modelHeading').html("Tambah User");
+                $('#modelHeading').html("Add Data Driver");
                 $('#ajaxModelexa').modal('show');
             });
 
