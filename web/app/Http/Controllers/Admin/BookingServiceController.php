@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\BookingServices;
 use App\Models\Booking;
+use App\Models\AdditionalService;
+
 
 use \Yajra\Datatables\Datatables;
 use App\Http\Controllers\Controller;
@@ -20,7 +22,7 @@ class BookingServiceController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $deposits = BookingServices::with('booking')->get();
+            $deposits = BookingServices::with('booking', 'AdditionalService')->get();
             return DataTables::of($deposits)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
@@ -31,6 +33,9 @@ class BookingServiceController extends Controller
                 ->addColumn('booking.code_booking', function ($row) {
                     return $row->booking ? $row->booking->code_booking : 'N/A';
                 })
+                 ->addColumn('AdditionalService.name', function ($row) {
+                    return $row->AdditionalService ? $row->AdditionalService->name : 'N/A';
+                })
                 // ->addColumn('booking', function ($row) {
                 //     return $row->booking ? $row->booking->code_booking : 'N/A';
                 // })
@@ -39,7 +44,10 @@ class BookingServiceController extends Controller
         }
 
         $Booking = Booking::all();
-        return view('admin.BookingServices', compact('Booking'));
+        $AdditionalService = AdditionalService::all();
+
+        // AdditionalService
+        return view('admin.BookingServices', compact('Booking', 'AdditionalService'));
     }
 
     /**

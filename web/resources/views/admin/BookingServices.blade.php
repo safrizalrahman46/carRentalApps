@@ -40,7 +40,7 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <h4 class="card-title">Booking Deposit</h4>
+                        <h4 class="card-title">Booking Services</h4>
 
 
                         <div class="col-md-12">
@@ -128,30 +128,24 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="deposit_amount" class="col-sm-12">Deposit Amount</label>
                             <div class="col-sm-12">
-                                <input type="number" class="form-control" id="deposit_amount" name="deposit_amount" placeholder="Enter Deposit Amount" value="" required>
+                                <label for="additional_service_id">Additional Service</label>
+                                <select id="additional_service_id" name="additional_service_id" class="form-control">
+                                    @foreach ($AdditionalService as $AdditionalServiceitem)
+                                        <option value="{{ $AdditionalServiceitem->id }}">{{ $AdditionalServiceitem->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="status" class="col-sm-12">Status</label>
+                            <label for="price" class="col-sm-12">Price</label>
                             <div class="col-sm-12">
-                                <select class="form-control" id="status" name="status" required>
-                                    <option value="" disabled selected>Select Status</option>
-                                    <option value="held">held</option>
-                                    <option value="returned">returned</option>
-                                    <option value="deducted">deducted</option>
-                                </select>
+                                <input type="number" class="form-control" id="price" name="price" placeholder="Enter Deposit Amount" value="" required>
                             </div>
                         </div>
-{{--
-                        <div class="form-group">
-                            <label for="processed_at" class="col-sm-12">Processed At</label>
-                            <div class="col-sm-12">
-                                <input type="datetime-local" class="form-control" id="processed_at" name="processed_at" value="" required>
-                            </div>
-                        </div>  --}}
+
+
 
                         <div class="form-group">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -186,7 +180,7 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: '{{ route('admin.Bookings-Deposit.index') }}',
+                    url: '{{ route('admin.Bookings-Service.index') }}',
                     data: function(data) {
                         var event = $('#filter_event_id').val();
                     }
@@ -203,19 +197,9 @@
 
 {{--
                     { data: 'booking.booking_group_id', name: 'booking.booking_group_id' }  --}}
-                    { data: 'deposit_amount', name: 'deposit_amount' },
-                    {  data: 'status',
-                    name: 'status',
-                    render: function(data) {
-                        if (data === 'held') {
-                            return '<span class="badge badge-success">Held</span>';
-                        } else if (data === 'returned') {
-                            return '<span class="badge badge-warning">Returned</span>';
-                        } else if (data === 'deducted') {
-                            return '<span class="badge badge-danger">Deducted</span>';
-                        }
-                        return '<span class="badge badge-secondary">Unknown</span>';
-                    }
+                    { data: 'AdditionalService.name', name: 'AdditionalService.name' },
+                    {   data: 'price',
+                        name: 'price',
                     },
                     {
                         data: 'action',
@@ -231,20 +215,20 @@
                 $('#simpandata').val("create-post");
                 $('#id').val('');
                 $('#postForm').trigger("reset");
-                $('#modelHeading').html("Add Data Booking Deposit");
+                $('#modelHeading').html("Add Data Booking Service");
                 $('#ajaxModelexa').modal('show');
             });
 
             $('body').on('click', '.editDeposit', function() {
                 var id = $(this).data('id');
-                $.get("{{ route('admin.Bookings-Deposit.index') }}" + '/' + id + '/edit', function(data) {
+                $.get("{{ route('admin.Bookings-Service.index') }}" + '/' + id + '/edit', function(data) {
                     $('#modelHeading').html("Edit Booking Deposit");
                     $('#simpandata').val("edit-booking-deposit");
                     $('#ajaxModelexa').modal('show');
                     $('#id').val(data.id);
                     $('#booking_id').val(data.booking_id);
-                    $('#deposit_amount').val(data.deposit_amount);
-                    $('#status').val(data.status);
+                    $('#additional_service_id ').val(data.additional_service_id );
+                    $('#price').val(data.price);
                 })
             });
 
@@ -254,7 +238,7 @@
 
                 $.ajax({
                     data: $('#postForm').serialize(),
-                    url: "{{ route('admin.Bookings-Deposit.store') }}",
+                    url: "{{ route('admin.Bookings-Service.store') }}",
                     type: "POST",
                     dataType: 'json',
                     success: function(data) {
@@ -283,7 +267,7 @@
                 if (confirm("Apakah anda yakin ingin menghapus data ini?")) {
                     $.ajax({
                         type: "DELETE",
-                        url: "{{ route('admin.Bookings-Deposit.index') }}" + '/' + id,
+                        url: "{{ route('admin.Bookings-Service.index') }}" + '/' + id,
                         success: function(data) {
                             $.getScript('{{ asset('/public/notify.min.js') }}', function() {
                                 $.notify("Delete data success", "info");

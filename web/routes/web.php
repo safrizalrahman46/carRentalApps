@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\Admin\BookingDepositController;
 use App\Http\Controllers\Admin\DriverControllerr;
 use App\Http\Controllers\Admin\DeliveryPickupChargesController;
+use App\Http\Controllers\Admin\BookingServiceController;
 
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\UserController;
@@ -229,6 +230,18 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/Bookings-Deposit/{id}/edit', [BookingDepositController::class, 'edit'])->name('admin.Bookings-Deposit.edit');
         Route::put('/Bookings-Deposit/{id}', [BookingDepositController::class, 'update'])->name('admin.Bookings-Deposit.update');
         Route::delete('/Bookings-Deposit/{id}', [BookingDepositController::class, 'destroy'])->name('admin.Bookings-Deposit.destroy');
+        // Route::get('/export-master-supplier', [CarAvailabilityController::class, 'export_tabel_car_availability'])->name('Export.car_availability');
+        // Route::get('/export-master-supplier-pdf', [CarAvailabilityController::class, 'export_tabel_car_availability_pdf'])->name('Export.car_availabilityPDF');
+
+    });
+
+    Route::prefix('backoffice')->group(function () {
+        Route::get('/Bookings-Service', [BookingServiceController::class, 'index'])->name('admin.Bookings-Service.index');
+        Route::get('/Bookings-Service/create', [BookingServiceController::class, 'create'])->name('admin.Bookings-Service.create');
+        Route::post('/Bookings-Service', [BookingServiceController::class, 'store'])->name('admin.Bookings-Service.store');
+        Route::get('/Bookings-Service/{id}/edit', [BookingServiceController::class, 'edit'])->name('admin.Bookings-Service.edit');
+        Route::put('/Bookings-Service/{id}', [BookingServiceController::class, 'update'])->name('admin.Bookings-Service.update');
+        Route::delete('/Bookings-Service/{id}', [BookingServiceController::class, 'destroy'])->name('admin.Bookings-Service.destroy');
         // Route::get('/export-master-supplier', [CarAvailabilityController::class, 'export_tabel_car_availability'])->name('Export.car_availability');
         // Route::get('/export-master-supplier-pdf', [CarAvailabilityController::class, 'export_tabel_car_availability_pdf'])->name('Export.car_availabilityPDF');
 

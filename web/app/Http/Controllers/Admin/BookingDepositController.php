@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\BookingDeposit;
+
 use App\Models\Booking;
 
 use \Yajra\Datatables\Datatables;
@@ -39,6 +40,7 @@ class BookingDepositController extends Controller
         }
 
         $Booking = Booking::all();
+
         return view('admin.BookingDeposits', compact('Booking'));
     }
 

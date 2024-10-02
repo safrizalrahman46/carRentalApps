@@ -163,7 +163,9 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ url('/backoffice/Bookings-Deposit') }}">Bookings Deposit</a>
                                 </li>
-
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('/backoffice/Bookings-Service') }}">Bookings Service</a>
+                                </li>
                             </ul>
                         </div>
                     </li>

@@ -10,7 +10,7 @@ use App\Models\BookingServices;
 class AdditionalService extends Model
 {
     use HasFactory;
-    protected $table = '';
+    protected $table = 'additional_services';
 
     protected $fillable = [
         'name',
