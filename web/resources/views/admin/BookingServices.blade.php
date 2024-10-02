@@ -197,7 +197,9 @@
 
 {{--
                     { data: 'booking.booking_group_id', name: 'booking.booking_group_id' }  --}}
-                    { data: 'AdditionalService.name', name: 'AdditionalService.name' },
+                    { data: 'AdditionalService.name', name: 'AdditionalService.name'
+
+                },
                     {   data: 'price',
                         name: 'price',
                     },
