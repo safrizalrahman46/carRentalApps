@@ -8,7 +8,7 @@ use App\Models\cars;
 use App\Models\User;
 use App\Models\ManageBooking;
 use App\Models\BookingDeposit;
-
+use App\Models\BookingServices;
 
 
 class Booking extends Model
@@ -57,5 +57,10 @@ class Booking extends Model
     public function BookingDeposit()
     {
         return $this->hasMany(BookingDeposit::class, 'booking_id');
+    }
+
+    public function BookingServices()
+    {
+        return $this->hasMany(BookingServices::class, 'booking_id');
     }
 }
