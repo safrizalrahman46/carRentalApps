@@ -54,7 +54,7 @@ class Booking extends Model
         return $this->hasMany(booking::class, 'booking_id');
     }
 
-    public function Bookings()
+    public function BookingDeposit()
     {
         return $this->hasMany(BookingDeposit::class, 'booking_id');
     }

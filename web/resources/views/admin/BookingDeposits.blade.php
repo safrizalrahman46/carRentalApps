@@ -120,7 +120,7 @@
                             <div class="col-sm-12">
                                 <label for="booking_id">Booking</label>
                                 <select id="booking_id" name="booking_id" class="form-control">
-                                    @foreach ($Bookings as $Bookingitem)
+                                    @foreach ($Booking as $Bookingitem)
                                         <option value="{{ $Bookingitem->id }}">{{ $Bookingitem->code_booking }}</option>
                                     @endforeach
                                 </select>
@@ -199,7 +199,10 @@
                         data: 'DT_RowIndex',
                         name: 'DT_RowIndex'
                     },
-                    { data: 'booking_id ', name: 'booking_id ' },
+                    { data: 'booking.code_booking', name: 'booking.code_booking' },  // updated line
+
+{{--
+                    { data: 'booking.booking_group_id', name: 'booking.booking_group_id' }  --}}
                     { data: 'deposit_amount', name: 'deposit_amount' },
                     {  data: 'status',
                     name: 'status',
@@ -232,21 +235,19 @@
                 $('#ajaxModelexa').modal('show');
             });
 
-            $('body').on('click', '.editPost', function() {
+            $('body').on('click', '.editDeposit', function() {
                 var id = $(this).data('id');
                 $.get("{{ route('admin.Bookings-Deposit.index') }}" + '/' + id + '/edit', function(data) {
-                    $('#modelHeading').html("Edit User");
-                    $('#simpandata').val("edit-user");
+                    $('#modelHeading').html("Edit Booking Deposit");
+                    $('#simpandata').val("edit-booking-deposit");
                     $('#ajaxModelexa').modal('show');
                     $('#id').val(data.id);
                     $('#booking_id').val(data.booking_id);
                     $('#deposit_amount').val(data.deposit_amount);
                     $('#status').val(data.status);
-                    $('#processed_at ').val(data.processed_at);
-
-
                 })
             });
+
 
             $('#simpandata').click(function(e) {
                 e.preventDefault();
@@ -277,30 +278,25 @@
                 });
             });
 
-            $('body').on('click', '.deletePost', function() {
-
+            $('body').on('click', '.deleteDeposit', function() {
                 var id = $(this).data("id");
-                if (confirm("Apakah anda yakin ingin menghapus data ini ? ")) {
-
+                if (confirm("Apakah anda yakin ingin menghapus data ini?")) {
                     $.ajax({
                         type: "DELETE",
-                        url: "{{ route('admin.Bookings-Deposit.store') }}" + '/' + id,
+                        url: "{{ route('admin.Bookings-Deposit.index') }}" + '/' + id,
                         success: function(data) {
-
-
                             $.getScript('{{ asset('/public/notify.min.js') }}', function() {
                                 $.notify("Delete data success", "info");
                             });
-
                             table.draw();
                         },
                         error: function(data) {
                             console.log('Error:', data);
                         }
                     });
-
                 }
             });
+
 
 
 

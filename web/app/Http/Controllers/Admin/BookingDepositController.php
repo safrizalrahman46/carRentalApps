@@ -31,12 +31,15 @@ class BookingDepositController extends Controller
                 ->addColumn('booking.code_booking', function ($row) {
                     return $row->booking ? $row->booking->code_booking : 'N/A';
                 })
+                // ->addColumn('booking', function ($row) {
+                //     return $row->booking ? $row->booking->code_booking : 'N/A';
+                // })
                 ->rawColumns(['action'])
                 ->make(true);
         }
 
-        $Bookings = Booking::all();
-        return view('admin.BookingDeposits', compact('Bookings'));
+        $Booking = Booking::all();
+        return view('admin.BookingDeposits', compact('Booking'));
     }
 
     /**

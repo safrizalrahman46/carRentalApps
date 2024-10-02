@@ -18,10 +18,10 @@ class BookingDeposit extends Model
     ];
 
     public $timestamps = false; // Assuming you want to use created_at and updated_at timestamps
-    public function booking()
-    {
-        return $this->belongsTo(booking::class, 'booking_id');
+    public function booking() {
+        return $this->belongsTo(Booking::class, 'booking_id');
     }
+
 
 
 
