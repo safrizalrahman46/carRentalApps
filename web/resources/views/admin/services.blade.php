@@ -251,7 +251,7 @@
                 $('#simpandata').val("create-post");
                 $('#id').val('');
                 $('#postForm').trigger("reset");
-                $('#modelHeading').html("Tambah User");
+                $('#modelHeading').html("Add Data User");
                 $('#ajaxModelexa').modal('show');
             });
 

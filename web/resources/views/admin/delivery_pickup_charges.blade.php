@@ -75,9 +75,9 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>pickup_location</th>
-                                        <th>dropoff_location</th>
-                                        <th>charge</th>
+                                        <th>Pickup Location</th>
+                                        <th>Dropoff Location</th>
+                                        <th>Charge</th>
 
                                         <th width="80px">Action</th>
                                     </tr>
@@ -147,7 +147,7 @@
 
                         <div class="form-group">
 
-                            <label for="pickup_location" class="col-sm-12">pickup_location</label>
+                            <label for="pickup_location" class="col-sm-12">Pickup Location</label>
                             <div class="col-sm-12">
                                 <input type="text" class="form-control" id="pickup_location" name="pickup_location"
                                     placeholder="Enter service name" value="" required>
@@ -155,7 +155,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="dropoff_location" class="col-sm-12">dropoff_location</label>
+                            <label for="dropoff_location" class="col-sm-12">Dropoff Location</label>
                             <div class="col-sm-12">
                                 <input type="text" class="form-control" id="dropoff_location" name="dropoff_location"
                                     placeholder="Enter dropoff_location" value="" required>
@@ -163,7 +163,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="charge" class="col-sm-12">charge</label>
+                            <label for="charge" class="col-sm-12">Charge</label>
                             <div class="col-sm-12">
                                 <input type="number" class="form-control" id="charge" name="charge"
                                     placeholder="Enter charge" value="" required>
@@ -264,7 +264,7 @@
                 $('#simpandata').val("create-post");
                 $('#id').val('');
                 $('#postForm').trigger("reset");
-                $('#modelHeading').html("Tambah User");
+                $('#modelHeading').html("Add Data Delivery Pickup Charges");
                 $('#ajaxModelexa').modal('show');
             });
 

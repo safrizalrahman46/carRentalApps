@@ -40,7 +40,7 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <h4 class="card-title">Additional Additional-Services</h4>
+                        <h4 class="card-title">Additional Additional Services</h4>
 
 
                         <div class="col-md-12">
@@ -251,7 +251,7 @@
                 $('#simpandata').val("create-post");
                 $('#id').val('');
                 $('#postForm').trigger("reset");
-                $('#modelHeading').html("Tambah User");
+                $('#modelHeading').html("Add Data Additional Services");
                 $('#ajaxModelexa').modal('show');
             });
 
