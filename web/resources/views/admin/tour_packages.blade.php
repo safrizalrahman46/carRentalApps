@@ -75,10 +75,10 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>package_name</th>
-                                        <th>description</th>
-                                        <th>price</th>
-                                        <th>duration</th>
+                                        <th>Package Name</th>
+                                        <th>Description</th>
+                                        <th>Price</th>
+                                        <th>Duration</th>
 
                                         <th width="80px">Action</th>
                                     </tr>
@@ -121,7 +121,7 @@
 
                         <div class="form-group">
 
-                            <label for="package_name" class="col-sm-12">package_name</label>
+                            <label for="package_name" class="col-sm-12">Package Name</label>
                             <div class="col-sm-12">
                                 <input type="text" class="form-control" id="package_name" name="package_name"
                                     placeholder="Enter service name" value="" required>
@@ -137,7 +137,7 @@
 
 
                         <div class="form-group">
-                            <label for="price" class="col-sm-12">price</label>
+                            <label for="price" class="col-sm-12">Price</label>
                             <div class="col-sm-12">
                                 <input type="number" class="form-control" id="price" name="price"
                                     placeholder="Enter price" value="" required>
@@ -145,7 +145,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="duration" class="col-sm-12">duration</label>
+                            <label for="duration" class="col-sm-12">Duration</label>
                             <div class="col-sm-12">
                                 <input type="number" class="form-control" id="duration" name="duration"
                                     placeholder="Enter duration" value="" required>
@@ -232,7 +232,7 @@
                 $('#simpandata').val("create-post");
                 $('#id').val('');
                 $('#postForm').trigger("reset");
-                $('#modelHeading').html("Tambah User");
+                $('#modelHeading').html("Add Data Tour Packages");
                 $('#ajaxModelexa').modal('show');
             });
 

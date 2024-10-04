@@ -267,6 +267,20 @@
                             </ul>
                         </div>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#Deposit" aria-expanded="false" aria-controls="Deposit">
+                            <i class="icon-paper menu-icon"></i>
+                            <span class="menu-title">User Management</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="Deposit">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url('/backoffice/') }}"> Security Deposit</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
                     {{--  <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#systemLogs" aria-expanded="false" aria-controls="systemLogs">
                             <i class="icon-paper menu-icon"></i>
