@@ -3,80 +3,109 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\AdditionalService;
-
-use App\Models\Booking;
-
 use \Yajra\Datatables\Datatables;
+// use App\DataTables;
+
+
+use Session;
+use App\Exports\AdditionalServiceExport;
+use Barryvdh\DomPDF\Facade\Pdf; // Import PDF facade
+
 use App\Http\Controllers\Controller;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session as FacadesSession;
+
 class AdditionalServicesController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+    //  public function export_tabel_Charge()
+    //  {
+    //      return \Excel::download(new ChargeExport, 'Charge.xlsx');
+    //  }
+    //  public function export_tabel_Charge_pdf()
+    //  {
+    //     $Charge = Charge::all();
+    //     $pdf = PDF::loadView('pdf.Charge', compact('Charge'));
+    //     return $pdf->download('Charge.pdf');
+    //  }
+
+
+
     public function index(Request $request)
-    {
-        if ($request->ajax()) {
-            $deposits = AdditionalService::with('booking')->get();
-            return DataTables::of($deposits)
-                ->addIndexColumn()
-                ->addColumn('action', function ($row) {
-                    $btn = '<a href="javascript:void(0)" data-id="' . $row->id . '" class="edit btn btn-success editDeposit"><i class="ti-pencil"></i> EDIT</a>';
-                    $btn .= ' <a href="javascript:void(0)" data-id="' . $row->id . '" class="btn btn-danger deleteDeposit"><i class="ti-trash"></i> DELETE</a>';
-                    return $btn;
-                })
-                // ->addColumn('booking.code_booking', function ($row) {
-                //     return $row->booking ? $row->booking->code_booking : 'N/A';
-                // })
-                // ->addColumn('booking', function ($row) {
-                //     return $row->booking ? $row->booking->code_booking : 'N/A';
-                // })
-                ->rawColumns(['action'])
-                ->make(true);
-        }
+{
+    // Get all available cars from the cars table
+    // $availableCars = cars::where('is_available', 'yes')->get();
 
-        $Booking = Booking::all();
-
-        return view('admin.AdditionalServices', compact('Booking'));
+    if ($request->ajax()) {
+        // $post = Charge::get();
+        $post = AdditionalService::get();
+        return DataTables::of($post)
+            ->addIndexColumn()
+            ->addColumn('action', function ($row) {
+                $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Edit" class="edit btn btn-success  editPost"><i class="ti-pencil"></i> EDIT</a>';
+                $btn = $btn . ' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="' . $row->id . '" data-original-title="Delete" class="btn btn-danger  deletePost"><i class="ti-trash"></i> HAPUS </a>';
+                return $btn;
+            })
+            ->rawColumns(['action'])
+            ->make(true);
     }
+
+    // Pass the available cars to the view
+
+    return view('admin.additional_services');
+}
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'booking_id' => 'required',
-            'deposit_amount' => 'required',
-            'status' => 'required',
+            'name' => 'required',
+            'price' => 'required',
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()->all()]);
+            return response()->json([
+                'error' => $validator->errors()->all(),
+            ]);
         }
+
+        $post = $request->only([
+            'name',
+            'price',
+        ]);
 
         AdditionalService::updateOrCreate(
             ['id' => $request->id],
-            $request->only(['booking_id', 'deposit_amount', 'status'])
+            $post
         );
 
-        return response()->json(['success' => 'AdditionalService saved successfully.']);
+
+
+        return response()->json(['success' => 'Charge saved successfully.']);
     }
 
 
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'booking_id' => 'required',
-            'deposit_amount' => 'required',
-            'status' => 'required',
+            'name' => 'required',
+            'price' => 'required',
 
         ]);
 
@@ -86,32 +115,38 @@ class AdditionalServicesController extends Controller
 
         $AdditionalService = AdditionalService::findOrFail($id);
         $AdditionalService->update($request->only([
-        'booking_id', 'deposit_amount', 'status'
+            'name',
+            'price',
         ]));
 
-        return response()->json(['success' => 'Booking updated successfully.']);
+        return response()->json(['success' => 'Charge updated successfully.']);
     }
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Post
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
+    //     $Charge = Charge::findOrFail($id);
+    // return view('admin.Charge_edit', compact('Charge'));
         $post = AdditionalService::where(['id' => $id])->first();
         return response()->json($post);
     }
 
+
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Post
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        AdditionalService::where('id', $id)->delete();
-        return response()->json(['success' => 'AdditionalService deleted successfully.']);
+        AdditionalService::where(['id' => $id])->delete();
+
+        return response()->json(['success' => 'Category deleted successfully.']);
     }
+
 }

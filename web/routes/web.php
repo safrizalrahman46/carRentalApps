@@ -19,6 +19,7 @@ use App\Http\Controllers\Admin\BookingDepositController;
 use App\Http\Controllers\Admin\DriverControllerr;
 use App\Http\Controllers\Admin\DeliveryPickupChargesController;
 use App\Http\Controllers\Admin\BookingServiceController;
+use App\Http\Controllers\Admin\AdditionalServicesController;
 
 use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\Admin\UserController;
@@ -171,6 +172,19 @@ Route::group(['middleware' => ['auth']], function () {
         // Route::get('/export-master-supplier-pdf', [CarAvailabilityController::class, 'export_tabel_car_availability_pdf'])->name('Export.car_availabilityPDF');
 
     });
+
+    Route::prefix('backoffice')->group(function () {
+        Route::get('/Additional-Service', [AdditionalServicesController::class, 'index'])->name('admin.Additional-Service.index');
+        Route::get('/Additional-Service/create', [AdditionalServicesController::class, 'create'])->name('admin.Additional-Service.create');
+        Route::post('/Additional-Service', [AdditionalServicesController::class, 'store'])->name('admin.Additional-Service.store');
+        Route::get('/Additional-Service/{id}/edit', [AdditionalServicesController::class, 'edit'])->name('admin.Additional-Service.edit');
+        Route::put('/Additional-Service/{id}', [AdditionalServicesController::class, 'update'])->name('admin.Additional-Service.update');
+        Route::delete('/Additional-Service/{id}', [AdditionalServicesController::class, 'destroy'])->name('admin.Additional-Service.destroy');
+        // Route::get('/export-master-supplier', [CarAvailabilityController::class, 'export_tabel_car_availability'])->name('Export.car_availability');
+        // Route::get('/export-master-supplier-pdf', [CarAvailabilityController::class, 'export_tabel_car_availability_pdf'])->name('Export.car_availabilityPDF');
+
+    });
+
 
 
     Route::prefix('backoffice')->group(function () {

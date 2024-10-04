@@ -75,8 +75,8 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>service_name</th>
-                                        <th>price</th>
+                                        <th>Service Name</th>
+                                        <th>Price</th>
 
                                         <th width="80px">Action</th>
                                     </tr>

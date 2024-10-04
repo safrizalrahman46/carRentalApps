@@ -19,8 +19,8 @@ class AdditionalService extends Model
     ];
 
     public $timestamps = false; // Assuming you want to use created_at and updated_at timestamps
-    public function BookingServices()
-    {
-        return $this->belongsTo(BookingServices::class, 'car_id');
-    }
+    // public function BookingServices()
+    // {
+    //     return $this->belongsTo(BookingServices::class, 'car_id');
+    // }
 }

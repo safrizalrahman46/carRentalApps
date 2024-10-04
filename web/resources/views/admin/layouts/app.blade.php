@@ -182,7 +182,7 @@
                                         <a class="nav-link" href="{{ url('/backoffice/Service') }}"> Services</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ url('/backoffice/Service') }}">Additional Services</a>
+                                        <a class="nav-link" href="{{ url('/backoffice/Additional-Service') }}">Additional Services</a>
                                     </li>
                                 </ul>
 
